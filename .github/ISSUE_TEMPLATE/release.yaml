@@ -77,7 +77,8 @@ body:
 - type: checkboxes
   id: release_manual_docker_build
   attributes:
-    label: "#### Steps"
+    label: Manual Docker image build
+    description: If the "Build and push development images" Github action is not appropriate for your release, or is not operating properly, you can build and push Docker images manually
     options:
     - label: Check out your release tag.
     - label: Run `make container`. Note that you can set the `TAG` environment variable if you need to override the current tag in Makefile.
