@@ -70,19 +70,17 @@ body:
     - label: Mark the PR ready for review.
     - label: Inform and ping the @team-k8s via slack of impending release with a link to the release PR.
 - type: textarea
-  id: release_trouble_shooting_link
+  id: release_trouble_shooting
   attributes:
-    label: Release Troubleshooting
-    value: The [Release Troubleshooting guide](https://github.com/Kong/kubernetes-ingress-controller/blob/main/RELEASE.md#release-troubleshooting) covers strategies for dealing with a release that has failed.
-- type: markdown
+    label: Manual Docker image build
+    value: If the "Build and push development images" Github action is not appropriate for your release, or is not operating properly, you can build and push Docker images manually
+- type: checkboxes
+  id: release_manual_docker_build
   attributes:
-    value: |
-      ### Manual Docker image build
-
-      If the "Build and push development images" Github action is not appropriate for your release, or is not operating properly, you can build and push Docker images manually
-
-      - [ ] Check out your release tag.
-      - [ ] Run `make container`. Note that you can set the `TAG` environment variable if you need to override the current tag in Makefile.
-      - [ ] Add additional tags for your container (e.g. `docker tag kong/kubernetes-ingress-controller:1.2.0-alpine kong/kubernetes-ingress-controller:1.2.0; docker tag kong/kubernetes-ingress-controller:1.2.0-alpine kong/kubernetes-ingress-controller:1.2`)
-      - [ ] Create a temporary token for the `kongbot` user (see 1Password) and log in using it.
-      - [ ] Push each of your tags (e.g. `docker push kong/kubernetes-ingress-controller:1.2.0-alpine`)
+    label: "#### Steps"
+    options:
+    - label: Check out your release tag.
+    - label: Run `make container`. Note that you can set the `TAG` environment variable if you need to override the current tag in Makefile.
+    - label: Add additional tags for your container (e.g. `docker tag kong/kubernetes-ingress-controller:1.2.0-alpine kong/kubernetes-ingress-controller:1.2.0; docker tag kong/kubernetes-ingress-controller:1.2.0-alpine kong/kubernetes-ingress-controller:1.2`)
+    - label: Create a temporary token for the `kongbot` user (see 1Password) and log in using it.
+    - label: Push each of your tags (e.g. `docker push kong/kubernetes-ingress-controller:1.2.0-alpine`)
