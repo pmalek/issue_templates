@@ -77,6 +77,8 @@ body:
 - type: markdown
   attributes:
     value: |
+      ### Manual Docker image build
+
       If the "Build and push development images" Github action is not appropriate for your release, or is not operating properly, you can build and push Docker images manually
 
       - [ ] Check out your release tag.
